@@ -10,7 +10,7 @@ import lombok.*;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
+
     private Long id;
 
     @Column(nullable = false)
