@@ -4,6 +4,7 @@ import com.proyecto.backend.dto.CategoriaDTO;
 import com.proyecto.backend.services.CategoriaService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
+@Tag(name = "Categorias", description = "CRUD de categorias")
 public class CategoriaController {
     private final CategoriaService categoriaService;
     public CategoriaController(CategoriaService categoriaService) {
