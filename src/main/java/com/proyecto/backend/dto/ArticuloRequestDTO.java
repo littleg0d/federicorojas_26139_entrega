@@ -13,12 +13,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticuloDTO {
-    @Positive (message = "El id debe ser un número positivo")
-    @Schema(
-            example = "1",
-            accessMode = Schema.AccessMode.READ_ONLY    )
-    private Long id;
+public class ArticuloRequestDTO {
+
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
