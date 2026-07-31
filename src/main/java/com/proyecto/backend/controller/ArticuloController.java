@@ -1,6 +1,7 @@
 package com.proyecto.backend.controller;
 
-import com.proyecto.backend.dto.ArticuloDTO;
+import com.proyecto.backend.dto.ArticuloRequestDTO;
+import com.proyecto.backend.dto.ArticuloResponseDTO;
 import com.proyecto.backend.services.ArticuloService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -24,7 +25,7 @@ public class ArticuloController {
 
     @ApiResponse(responseCode = "200", description = "Artículos obtenidos correctamente")
     @GetMapping
-    public ResponseEntity<List<ArticuloDTO>> getArticulos(){
+    public ResponseEntity<List<ArticuloResponseDTO>> getArticulos(){
         return ResponseEntity
                 .status(200)
                 .body(articuloService.listar());
@@ -35,7 +36,7 @@ public class ArticuloController {
             @ApiResponse(responseCode = "404", description = "Artículo no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<ArticuloDTO> getArticuloById(@PathVariable Long id){
+    public ResponseEntity<ArticuloResponseDTO> getArticuloById(@PathVariable Long id){
         return ResponseEntity
                 .status(200)
                 .body(articuloService.buscarPorId(id));
@@ -47,7 +48,7 @@ public class ArticuloController {
             @ApiResponse(responseCode = "404", description = "Categoria no encontrada")
     })
     @PostMapping
-    public ResponseEntity<ArticuloDTO> crearArticulo(@Valid @RequestBody ArticuloDTO dto){
+    public ResponseEntity<ArticuloResponseDTO> crearArticulo(@Valid @RequestBody ArticuloRequestDTO dto){
         return ResponseEntity
                 .status(201)
                 .body((articuloService.crear(dto)));
@@ -59,7 +60,7 @@ public class ArticuloController {
             @ApiResponse(responseCode = "404", description = "Artículo o categoria no encontrados")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<ArticuloDTO> modificarArticulo(@PathVariable Long id, @Valid @RequestBody ArticuloDTO dto){
+    public ResponseEntity<ArticuloResponseDTO> modificarArticulo(@PathVariable Long id, @Valid @RequestBody ArticuloRequestDTO dto){
         return ResponseEntity
                 .status(200)
                 .body((articuloService.actualizar(id, dto)));
